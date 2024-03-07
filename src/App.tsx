@@ -22,11 +22,11 @@ class Teams extends React.Component<TeamsIF_> {
   render() {
     const oneTeam = this.props;
     return (
-      <div className="scrollable">
+      <>
         <p>School: {oneTeam.school}</p>
         <p>Mascot: {oneTeam.name}</p>
         <p>Location: {oneTeam.city}</p>
-      </div>
+      </>
     );
   }
 }
@@ -34,14 +34,14 @@ class Teams extends React.Component<TeamsIF_> {
 function TeamList() {
   return (
     <div className="scrollable">
-      <p className="left">Teams</p>
-      <ul>
-        {teams.teams.map((oneTeam) => (
-          <li>
-            <Teams {...oneTeam} />
-          </li>
-        ))}
-      </ul>
+      <h2 className="left">List of Schools</h2>
+      {teams.teams.map((team) => (
+        <div style={{ textAlign: 'left' }}>
+          <p>
+            School: {team.school} {team.name}
+          </p>
+        </div>
+      ))}
     </div>
   );
 }
@@ -49,15 +49,14 @@ function TeamList() {
 function TeamCard() {
   return (
     <div className="scrollable">
-      <h2 className="left">School Details</h2>
-      {teams.teams.map((team) => (
-        <div style={{ textAlign: 'left' }}>
-          <p>School: {team.school}</p>
-          <p>Mascot: {team.name}</p>
-          <p>Location: {team.city}</p>
-          <br></br>
-        </div>
-      ))}
+      <h2 className="left">Teams with info</h2>
+      <ul style={{ padding: '0px' }}>
+        {teams.teams.map((oneTeam) => (
+          <li className="left" style={{ listStyleType: 'none' }}>
+            <Teams {...oneTeam} />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
