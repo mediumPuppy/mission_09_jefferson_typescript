@@ -3,6 +3,12 @@ import logo from './logo.svg';
 import './App.css';
 import teams from './CollegeBasketballTeams.json';
 
+interface TeamsIF_ {
+  school: string;
+  name: string;
+  city: string;
+}
+
 function Heading() {
   return (
     <div>
@@ -12,14 +18,27 @@ function Heading() {
   );
 }
 
+class Teams extends React.Component<TeamsIF_> {
+  render() {
+    const oneTeam = this.props;
+    return (
+      <div className="scrollable">
+        <p>School: {oneTeam.school}</p>
+        <p>Mascot: {oneTeam.name}</p>
+        <p>Location: {oneTeam.city}</p>
+      </div>
+    );
+  }
+}
+
 function TeamList() {
   return (
     <div className="scrollable">
-      <h2 className="left">Teams</h2>
+      <p className="left">Teams</p>
       <ul>
-        {teams.teams.map((team) => (
-          <li style={{ textAlign: 'left' }}>
-            {team.school} {team.name}
+        {teams.teams.map((oneTeam) => (
+          <li>
+            <Teams {...oneTeam} />
           </li>
         ))}
       </ul>
