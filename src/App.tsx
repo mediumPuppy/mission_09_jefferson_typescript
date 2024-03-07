@@ -14,8 +14,8 @@ function Heading() {
 
 function TeamList() {
   return (
-    <div>
-      <h2>Teams</h2>
+    <div className="scrollable">
+      <h2 className="left">Teams</h2>
       <ul>
         {teams.teams.map((team) => (
           <li style={{ textAlign: 'left' }}>
@@ -29,7 +29,8 @@ function TeamList() {
 
 function TeamCard() {
   return (
-    <div>
+    <div className="scrollable">
+      <h2 className="left">School Details</h2>
       {teams.teams.map((team) => (
         <div style={{ textAlign: 'left' }}>
           <p>School: {team.school}</p>
@@ -47,17 +48,18 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Heading />
+        <div
+          style={{
+            width: '60%',
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-around',
+          }}
+        >
+          <TeamCard />
+          <TeamList />
+        </div>
       </header>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-evenly',
-        }}
-      >
-        <TeamCard />
-        <TeamList />
-      </div>
     </div>
   );
 }
